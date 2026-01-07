@@ -20,13 +20,14 @@ public class SecurityConfig {
                         .requestMatchers("/contact").permitAll()
                         .requestMatchers("/store").permitAll()
                         .requestMatchers("/register").permitAll()
-                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/login/**").permitAll()
                         .requestMatchers("/logout").permitAll()
                         .requestMatchers("/webjars/**").permitAll()
                         .requestMatchers("/css/**").permitAll()
                         .requestMatchers("/js/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form
+                .loginPage("/login")
                         .defaultSuccessUrl("/", true))
                 .logout(config -> config.logoutSuccessUrl("/"))
                 .build();

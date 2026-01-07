@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head meta-charset="utf-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/preloader.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/preloader.js}"></script>
+</head>
+
+<body>
+    <div id="preloader-overlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <div id="content">
+        <div class="container-fluid mt-4 ms-5">
+            <div class="card p-3 w-50">
+                <div class="card-header fw-bold mb-4">
+                    <h5>Sign In</h5>
+                </div>
+                <div class="card-body shadow-sm">
+                    <form th:action="@{/login}" method="POST">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                        <input name="username" type="email" placeholder="Email Address"
+                            class="form-control form-control-sm mb-3">
+                        <input name="password" type="password" placeholder="Password"
+                            class="form-control mb-3 form-contol-sm">
+                        <input type="submit" class="btn btn-primary" value="Sign In">
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <a th:href="@{/}">Back to Homepage</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
